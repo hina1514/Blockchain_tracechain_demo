@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo ATBM Nhóm 10</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+        body { 
+            background-color: #fdfaf6; 
+            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, sans-serif; 
+            color: #4a2c2d;
+        }
+
+        .header { 
+            background: linear-gradient(135deg, #bd2835, #8a1520); 
+            color: white; 
+            padding: 2rem 0; 
+            box-shadow: 0 8px 25px rgba(138, 21, 32, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 8px 25px rgba(138, 21, 32, 0.06);
+        }
+
+
+        .block-card { 
+            min-width: 360px; 
+            max-width: 390px; 
+            border-radius: 24px; 
+            box-shadow: 0 10px 30px rgba(138, 21, 32, 0.08); 
+            border: none; 
+            border-top: 6px solid #a31f28; 
+            background: white; 
+            flex-shrink: 0; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .block-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(138, 21, 32, 0.15);
+        }
+
+        .hash-code { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 0.8rem; 
+            background: #fcf0f1; 
+            padding: 10px 12px; 
+            border-radius: 12px; 
+            word-break: break-all; 
+            display: block; 
+            color: #82141d; 
+            font-weight: bold;
+            border-left: 4px solid #bd2835;
+        }
+
+        .chain-flow { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 24px; 
+            padding: 20px 10px; 
+            align-items: stretch; 
+        }
+        
+        .chain-flow::-webkit-scrollbar { height: 8px; }
+        .chain-flow::-webkit-scrollbar-thumb { background-color: #e6c5c7; border-radius: 10px; }
+
+        .timeline { 
+            border-left: 4px solid #a31f28; 
+            padding-left: 30px; 
+            margin-left: 15px; 
+        }
+
+        .timeline-item { 
+            position: relative; 
+            margin-bottom: 34px; 
+        }
+
+        .timeline-item::before { 
+            content: '\f0d1'; 
+            font-family: 'Font Awesome 5 Free'; 
+            font-weight: 900; 
+            position: absolute; 
+            left: -35px; 
+            top: 2px; 
+            width: 36px; 
+            height: 36px; 
+            background: #a31f28; 
+            color: white; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 15px; 
+            border: 4px solid #fdfaf6; 
+            box-shadow: 0 3px 8px rgba(138, 21, 32, 0.2);
+        }
+
+        .nav-tabs {
+            border-bottom: none;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .nav-tabs .nav-link { 
+            color: #7d494d; 
+            font-weight: 600; 
+            padding: 12px 24px; 
+            border-radius: 50px; 
+            background-color: #f7e4e5;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            background-color: #f2d0d3;
+            color: #8a1520;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #a31f28;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .btn {
+            border-radius: 50px; 
+            font-weight: 700;
+            padding: 10px 24px;
+            text-transform: uppercase; 
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success, .btn-primary, .btn-dark, .btn-secondary { 
+            background-color: #a31f28 !important; 
+            border-color: #a31f28 !important; 
+            color: white !important;
+        }
+
+        .btn-success:hover, .btn-primary:hover, .btn-dark:hover, .btn-secondary:hover {
+            background-color: #7a1219 !important;
+            border-color: #7a1219 !important;
+            box-shadow: 0 5px 15px rgba(122, 18, 25, 0.3);
+        }
+
+        .btn-warning {
+            background-color: #d97706 !important;
+            border-color: #d97706 !important;
+            color: white !important;
+        }
+
+        .btn-danger { 
+            background-color: #e63946 !important; 
+            border-color: #e63946 !important; 
+        }
+
+        .form-control, .form-select {
+            border-radius: 12px;
+            border: 2px solid #e6c5c7;
+            padding: 10px 15px;
+            color: #4a2c2d;
+            background-color: #fffafb;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #bd2835;
+            box-shadow: 0 0 0 0.25rem rgba(189, 40, 53, 0.15);
+        }
+
+        .text-success, .text-primary, .text-dark {
+            color: #a31f28 !important;
+        }
+        
+        .text-muted {
+            color: #8c6b6d !important;
+        }
+
+        .border-success, .border-primary, .border-warning {
+            border-color: #f2d0d3 !important;
+        }
+        
+        .border-danger {
+            border-color: #ffccd5 !important;
+        }
+
+        .bg-success, .bg-primary, .bg-secondary {
+            background-color: #a31f28 !important;
+            color: white !important;
+        }
+
+        .alert-success {
+            background-color: #fcf0f1;
+            border-color: #f2d0d3;
+            color: #82141d;
+        }
+
+        .alert-danger {
+            background-color: #fff0f2;
+            border-color: #ffccd5;
+            color: #c9184a;
+        }
+        
+        @media print {
+            body * { visibility: hidden; }
+            #verified_print_area, #verified_print_area * { visibility: visible; }
+            #verified_print_area { position: absolute; left: 0; top: 0; width: 100%; }
+            .d-print-none { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header text-center">
+        <h2 class="fw-bold"> DEMO - Nhóm 10</h2>
+        <p class="mb-0">Minh hoạ Blockchain & Chống giả mạo dữ liệu</p>
+    </div>
+
+    <div class="container py-4">
+        <ul class="nav nav-tabs mb-4 justify-content-center" id="mainTabs" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-init"><i class="fas fa-seedling"></i> Khởi tạo</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-update"><i class="fas fa-truck"></i> Cập nhật</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-trace"><i class="fas fa-search-location"></i> Truy vết</a></li>
+            <li class="nav-item"><a class="nav-link  fw-bold" data-bs-toggle="tab" href="#tab-verify"><i class="fas fa-shield-alt"></i> Kiểm toán SPV</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-explorer"><i class="fas fa-cubes"></i> Block Explorer</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" data-bs-toggle="tab" href="#tab-tamper"><i class="fas fa-database"></i> Demo giả mạo</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- Tab Khởi tạo -->
+            <div class="tab-pane fade show active" id="tab-init">
+                <div class="card shadow-sm col-md-8 mx-auto border-success">
+                    <div class="card-body">
+                        <h5 class="text-success border-bottom pb-2 mb-3"><i class="fas fa-file-signature"></i> Đăng ký lô hàng mới</h5>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Mã lô hàng:</label>
+                            <input type="text" id="init_id" class="form-control" placeholder="VD: GẠO ST25">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Nguồn gốc:</label>
+                                <input type="text" id="init_farm" class="form-control" placeholder="Hợp tác xã ...">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Chứng nhận chất lượng:</label>
+                                <select id="init_cert" class="form-select">
+                                    <option value="VietGAP">Chuẩn VietGAP</option>
+                                    <option value="GlobalGAP">Chuẩn GlobalGAP</option>
+                                    <option value="Organic">Chuẩn hữu cơ (Organic)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="initProduct()" class="btn btn-success w-100 fw-bold"><i class="fas fa-cloud-upload-alt"></i> Lưu vào DB & đào khối</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Cập nhật -->
+            <div class="tab-pane fade" id="tab-update">
+                <div class="card shadow-sm col-md-8 mx-auto border-primary">
+                    <div class="card-body">
+                        <h5 class="text-primary border-bottom pb-2 mb-3"><i class="fas fa-temperature-low"></i> Cập nhật Logistics </h5>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Mã lô hàng cần cập nhật:</label>
+                            <input type="text" id="update_id" class="form-control" placeholder="Nhập ID lô hàng...">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold">Nhiệt độ bảo quản (°C):</label>
+                                <input type="number" id="update_temp" class="form-control" placeholder="VD: 5">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold">Độ ẩm (%):</label>
+                                <input type="number" id="update_hum" class="form-control" placeholder="VD: 60">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold">Trạng thái:</label>
+                                <select id="update_status" class="form-select">
+                                    <option value="Đang vận chuyển">Vận chuyển</option>
+                                    <option value="Nhập kho">Nhập Kho</option>
+                                    <option value="Đã bán">Đã bán</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="updateProduct()" class="btn btn-primary w-100 fw-bold"><i class="fas fa-save"></i> Cập nhật DB & ký Block</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Truy vết -->
+            <div class="tab-pane fade" id="tab-trace">
+                <div class="card shadow-sm col-md-10 mx-auto">
+                    <div class="card-body">
+                        <div class="input-group mb-4">
+                            <input type="text" id="trace_id" class="form-control form-control-lg" placeholder="Nhập ID sản phẩm...">
+                            <button onclick="traceProduct()" class="btn btn-dark px-4 fw-bold"><i class="fas fa-search"></i> Lấy lịch sử</button>
+                        </div>
+                        <div id="trace_result" class="bg-white p-3 rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Kiểm toán SPV -->
+            <div class="tab-pane fade" id="tab-verify">
+                <div class="card shadow-sm col-md-8 mx-auto border-warning">
+                    <div class="card-body">
+                        <h5 class="text-success border-bottom pb-2 mb-3 fw-bold"><i class="fas fa-check-double"></i> Xác minh node (SPV)</h5>
+                        <p class="small text-muted">Chứng minh giao dịch tồn tại trong khối bằng Cây Merkle và hiển thị dữ liệu đã xác thực.</p>
+                        <div class="input-group mb-3">
+                            <input type="text" id="verify_id" class="form-control" placeholder="Nhập mã lô hàng...">
+                            <button onclick="verifySPV()" class="btn btn-success fw-bold text-white"><i class="fas fa-shield-alt"></i> Kiểm toán giao dịch</button>
+                        </div>
+                        <div id="spv_result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block Explorer -->
+            <div class="tab-pane fade" id="tab-explorer">
+                <div class="d-flex justify-content-between align-items-center mb-1" style="min-height: 32px;">
+                    <p class="fw-bold mb-0 small">
+                        <i class="fas fa-network-wired"></i> Blockchain Explorer
+                    </p>
+                    <button onclick="loadChain()" class="btn btn-outline-secondary btn-sm py-1 px-2">
+                        <i class="fas fa-sync"></i> Đồng bộ
+                    </button>
+                </div>
+                <div id="chain_view" class="chain-flow p-3 rounded bg-white border"></div>
+            </div>
+
+            <!-- Demo Tấn công DB -->
+            <div class="tab-pane fade" id="tab-tamper">
+                <div class="card shadow-sm border-danger">
+                    <div class="card-body">
+                        <h5 class="text-danger border-bottom pb-1 mb-3 fw-bold">
+                            DEMO tấn công sửa đổi Database
+                        </h5>
+                        <p class="small text-muted mb-2">Mô phỏng sửa đổi dữ liệu trong CSDL truyền thống.</p>
+
+                        <div class="input-group mb-3 w-75 mx-auto">
+                            <input type="text" 
+                                id="hack_id" 
+                                class="form-control form-control-sm border-secondary" 
+                                placeholder="Nhập ID lô hàng (VD: TRA-SHAN-001)">
+
+                            <button onclick="loadDBData()" 
+                                class="btn btn-secondary btn-sm fw-bold px-2 py-1">
+                                <i class="fas fa-download"></i> Tải dữ liệu từ DB
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <!-- CỘT TRÁI: Hacker -->
+                            <div class="col-md-6 border-end">
+                                <h6 class="fw-bold text-danger"><i class="fas fa-laptop-code"></i> Chỉnh sửa dữ liệu</h6>
+                                <textarea id="db_data" class="form-control mb-3 border-danger" rows="8"
+                                    style="background-color: #fff6fa; font-family: monospace;"
+                                    placeholder='Nhấn "Tải từ dữ liệu từ DB" để lấy dữ liệu...'></textarea>
+                                <button onclick="executeHack()" class="btn btn-danger w-100 fw-bold">
+                                    <i class="fas fa-skull-crossbones"></i> 2. Lưu đè DB
+                                </button>
+                            </div>
+
+                            <!-- CỘT PHẢI: Integrity Check -->
+                            <div class="col-md-6 d-flex flex-column h-100">
+                                <h6 class="fw-bold text-success mb-1"><i class="fas fa-shield-alt"></i> Blockchain Integrity Check</h6>
+                                <div class="p-3 rounded border mb-3 flex-grow-1 d-flex flex-column" style="background-color: #fffafb; border-color: #e6c5c7 !important;">
+                                    
+                                    <div class="fw-bold text-success small mb-1">Mã băm gốc (Neo trên Blockchain):</div>
+                                    <div id="hash_orig" class="hash-code mb-3"
+                                        style="font-family:monospace; font-size:0.85rem; background:#fdfaf6;
+                                            padding:8px 10px; border-radius:8px; word-break:break-all;
+                                            color:#8c6b6d; font-style:italic; border: 1px dashed #e6c5c7;">
+                                        Chưa có dữ liệu — nhấn "Check" để xem...
+                                    </div>
+
+                                    <div class="fw-bold text-danger small mb-1">Mã băm hiện tại (Từ DB truyền thống):</div>
+                                    <div id="hash_curr" class="hash-code mb-3"
+                                        style="font-family:monospace; font-size:0.85rem; background:#fdfaf6;
+                                            padding:8px 10px; border-radius:8px; word-break:break-all;
+                                            color:#8c6b6d; font-style:italic; border: 1px dashed #e6c5c7;">
+                                        Chưa có dữ liệu — nhấn "Check" để xem...
+                                    </div>
+
+                                    <div id="integrity_alert" 
+                                        class="alert alert-secondary text-center fw-bold mb-0 py-1 mt-auto small" 
+                                        style="border-radius: 8px; line-height: 1.2;">
+                                        <i class="fas fa-clock"></i> Chờ kiểm tra toàn vẹn...
+                                    </div>
+                                </div>
+
+                                <button onclick="checkIntegrity()" class="btn btn-success w-100 fw-bold mt-auto" style="padding: 10px 24px;">
+                                    <i class="fas fa-search"></i> 3. Check toàn vẹn dữ liệu
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function apiCall(url, method = 'GET', body = null) {
+            const options = { 
+                method, 
+                headers: {'Content-Type': 'application/json'} 
+            };
+            if (body) options.body = JSON.stringify(body);
+
+            try {
+                const res = await fetch(url, options);
+                return res.ok ? res.json() : { error: await res.text() };
+            } catch (e) {
+                return { error: "Lỗi kết nối đến server: " + e.message };
+            }
+        }
+
+        /* ====================== CÁC HÀM NGHIỆP VỤ ====================== */
+
+        async function initProduct() {
+            const id = document.getElementById('init_id').value.trim();
+            const farm = document.getElementById('init_farm').value.trim();
+            const cert = document.getElementById('init_cert').value;
+
+            if (!id || !farm) return alert("Vui lòng điền đủ mã lô hàng và nguồn gốc!");
+
+            const details = { farm, certification: cert, note: "Khởi tạo lô hàng" };
+            const result = await apiCall('/api/init', 'POST', { product_id: id, details });
+            alert(result.message || result.error || "Đã xảy ra lỗi");
+            loadChain();
+        }
+
+        async function updateProduct() {
+            const id = document.getElementById('update_id').value.trim();
+            const temp = document.getElementById('update_temp').value.trim();
+            const hum = document.getElementById('update_hum').value.trim();
+            const status = document.getElementById('update_status').value;
+
+            if (!id) return alert("Vui lòng nhập mã lô hàng!");
+
+            const details = {
+                temperature: temp ? temp + " °C" : "N/A",
+                humidity: hum ? hum + " %" : "N/A",
+                status: status
+            };
+
+            const result = await apiCall('/api/update', 'POST', { product_id: id, details });
+            alert(result.message || result.error || "Đã xảy ra lỗi");
+            loadChain();
+        }
+
+        async function traceProduct() {
+            const id = document.getElementById('trace_id').value.trim();
+            if (!id) return alert("Vui lòng nhập mã lô hàng!");
+
+            const result = await apiCall(`/api/trace/${id}`);
+            const div = document.getElementById('trace_result');
+
+            if (result.error) {
+                div.innerHTML = `<div class="alert alert-danger"><i class="fas fa-exclamation-triangle"></i> ${result.error}</div>`;
+                return;
+            }
+
+            let html = `
+                <div class="d-flex justify-content-between align-items-end border-bottom pb-2 mb-4">
+                    <h5 class="text-success fw-bold mb-0">Truy vết: ${result.product_id}</h5>
+                    <span class="badge bg-success">Tổng cộng: ${result.journey_length || result.history.length} bước</span>
+                </div>
+                <div class="timeline">
+            `;
+
+            result.history.forEach((tx, index) => {
+                const time = new Date(tx.timestamp * 1000).toLocaleString('vi-VN');
+                const details = tx.details || {};
+
+                let detailHtml = Object.entries(details).map(([key, val]) => `
+                    <div class="col-6 mb-1">
+                        <span class="text-muted text-capitalize">${key}:</span> 
+                        <span class="fw-bold">${val}</span>
+                    </div>
+                `).join('');
+
+                html += `
+                    <div class="timeline-item">
+                        <div class="card border-0 shadow-sm bg-light">
+                            <div class="card-header bg-white border-bottom-0 pt-3 pb-0">
+                                <h6 class="text-success fw-bold text-uppercase mb-0">Bước ${index + 1}: ${tx.action}</h6>
+                            </div>
+                            <div class="card-body py-2">
+                                <div class="text-muted small mb-2"><i class="far fa-clock"></i> ${time}</div>
+                                <div class="p-2 bg-white rounded border border-success border-opacity-25">
+                                    <div class="small fw-bold text-success mb-1">Dữ liệu chi tiết:</div>
+                                    <div class="row small">${detailHtml}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+
+            div.innerHTML = html + "</div>";
+        }
+
+async function verifySPV() {
+    const id = document.getElementById('verify_id').value.trim();
+    if (!id) return alert("Vui lòng nhập mã lô hàng!");
+
+    const div = document.getElementById('spv_result');
+    div.innerHTML = `<div class="text-center py-4"><i class="fas fa-spinner fa-spin fa-2x text-warning"></i><br>Đang xác thực SPV...</div>`;
+
+    const result = await apiCall('/api/verify-tx', 'POST', { product_id: id });
+
+    if (result.error) {
+        div.innerHTML = `<div class="alert alert-danger mt-3"><i class="fas fa-times-circle"></i> ${result.error}</div>`;
+        return;
+    }
+
+    // Debug proof
+    let proofHtml = '<li class="text-muted">Không có proof (cây chỉ có 1 lá)</li>';
+    if (result.proof_path && result.proof_path.length > 0) {
+        proofHtml = result.proof_path.map((p, i) => `
+            <li>Tầng ${i+1}: <code>${p[0].substring(0,40)}...</code> <small>(${p[1]})</small></li>
+        `).join('');
+    }
+
+    div.innerHTML = `
+        <div class="alert alert-success shadow-sm">
+            <h5 class="fw-bold"><i class="fas fa-check-circle"></i> ${result.message}</h5>
+            <p><strong>Block Index:</strong> ${result.block_index || 'N/A'}</p>
+            
+            <div class="mt-3">
+                <strong>Đường dẫn Merkle Proof:</strong>
+                <ul class="mt-2" style="font-family: monospace;">${proofHtml}</ul>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-3 small">
+            <i class="fas fa-info-circle"></i> 
+            ${result.proof_path && result.proof_path.length === 0 ? 
+                'Với khối chỉ có 1 giao dịch, Merkle Proof thường rỗng vì không cần sibling.' : 
+                'Merkle Proof đã được trả về.'}
+        </div>
+    `;
+}
+        async function loadChain() {
+            const data = await apiCall('/api/chain');
+            const container = document.getElementById('chain_view');
+            let html = '';
+
+            if (!data || data.length === 0) {
+                container.innerHTML = '<p class="text-muted p-3">Chưa có khối nào trên chuỗi.</p>';
+                return;
+            }
+
+            data.forEach(block => {
+                let txList = (block.transactions || []).map(tx => `
+                    <div class="bg-light p-2 mb-2 rounded border-start border-3 border-secondary" style="font-size: 0.8rem;">
+                        <b>[${tx.action}]</b> ${tx.product_id}<br>
+                        <small>${JSON.stringify(tx.details || {}, null, 2)}</small>
+                    </div>
+                `).join('');
+
+                html += `
+                    <div class="block-card p-3 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2">
+                            <strong class="text-success fs-5">Block #${block.index}</strong>
+                            <span class="badge bg-secondary">Nonce: ${block.nonce}</span>
+                        </div>
+                        <div class="small text-muted mb-2">${block.timestamp}</div>
+                        
+                        <div class="mb-1"><small class="fw-bold">Block Hash:</small><br><span class="hash-code text-danger">${block.hash}</span></div>
+                        <div class="mb-1"><small class="fw-bold">Previous Hash:</small><br><span class="hash-code text-muted">${block.previous_hash}</span></div>
+                        <div class="mb-2"><small class="fw-bold">Merkle Root:</small><br><span class="hash-code text-primary">${block.merkle_root}</span></div>
+                        
+                        <div class="mt-auto border-top pt-2">
+                            <small class="fw-bold">Transactions:</small>
+                            <div style="max-height: 160px; overflow-y: auto;">${txList || '<small class="text-muted">Không có giao dịch</small>'}</div>
+                        </div>
+                    </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+
+        async function loadDBData() {
+            const id = document.getElementById('hack_id').value.trim();
+            if (!id) return alert("Vui lòng nhập ID lô hàng!");
+
+            const result = await apiCall(`/api/get-db/${id}`);
+            if (result.error) return alert(result.error);
+
+            document.getElementById('db_data').value = JSON.stringify(result.details, null, 4);
+        }
+
+        async function executeHack() {
+            const id = document.getElementById('hack_id').value.trim();
+            if (!id) return alert("Vui lòng nhập ID!");
+
+            try {
+                const newData = JSON.parse(document.getElementById('db_data').value);
+                const result = await apiCall('/api/hack-db', 'POST', { product_id: id, details: newData });
+                alert(result.message || result.error);
+            } catch (e) {
+                alert("Lỗi cú pháp JSON! Vui lòng kiểm tra lại.");
+            }
+        }
+
+        async function checkIntegrity() {
+            const id = document.getElementById('hack_id').value.trim();
+            if (!id) return alert("Vui lòng nhập ID!");
+
+            const origEl = document.getElementById('hash_orig');
+            const currEl = document.getElementById('hash_curr');
+            const alertBox = document.getElementById('integrity_alert');
+
+            alertBox.className = "alert alert-secondary text-center fw-bold mb-0 py-2";
+            alertBox.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Đang quét...";
+
+            const result = await apiCall(`/api/check-integrity/${id}`);
+            if (result.error) return alert(result.error);
+
+            origEl.style.color = '#198754';
+            origEl.style.fontStyle = 'normal';
+            origEl.textContent = result.original_hash || "N/A";
+
+            currEl.style.fontStyle = 'normal';
+            if (result.is_valid) {
+                currEl.style.color = '#198754';
+            } else {
+                currEl.style.color = '#dc3545';
+            }
+            currEl.textContent = result.current_hash || "N/A";
+
+            if (result.is_valid) {
+                alertBox.className = "alert alert-success text-center fw-bold mb-0 py-1 mt-auto small";
+                alertBox.style = 'border-radius: 8px; line-height: 1.2;'
+                alertBox.innerHTML = "<i class='fas fa-check-circle'></i> Dữ liệu nguyên vẹn — Khớp với Blockchain";
+            } else {
+                alertBox.className = "alert alert-danger text-center fw-bold mb-0 py-1 mt-auto small";
+                alertBox.style = 'border-radius: 8px; line-height: 1.2;'
+                alertBox.innerHTML = "<i class='fas fa-radiation-alt'></i> Dữ liệu DB đã bị sửa đổi";
+            }
+        }
+
+
+        window.onload = () => {
+            loadChain();
+        };
+
+        document.getElementById('mainTabs').addEventListener('shown.bs.tab', (e) => {
+            if (e.target.getAttribute('href') === '#tab-explorer') {
+                loadChain();
+            }
+        });
+    </script>
+</body>
+</html>

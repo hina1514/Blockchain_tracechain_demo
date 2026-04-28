@@ -1,4 +1,3 @@
-Dưới đây là **README.md** chuyên nghiệp, rõ ràng và phù hợp cho dự án **TraceChain VN** của Nhóm 10:
 # DEMO hệ thống theo dõi chuỗi cung ứng sử dụng công nghệ **Blockchain**
 
 ## Giới thiệu
